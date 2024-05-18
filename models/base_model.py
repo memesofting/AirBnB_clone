@@ -2,8 +2,10 @@
 """Base class module"""
 
 
+from typing import Any
 import uuid
 from datetime import datetime
+'''from models.__init__ import storage'''
 
 
 class BaseModel:
@@ -25,7 +27,9 @@ class BaseModel:
     def save(self):
         """Updates the instance attribute (updated_at)
         with current datetime"""
-        self.updated_at = str(datetime.now())
+        self.updated_at = datetime.now()
+        from models import storage
+        storage.save()
         """return self.updated_at"""
 
     def to_dict(self):
@@ -43,3 +47,9 @@ class BaseModel:
 
     def __str__(self):
         return f'[{self.__class__.__name__}] ({self.id}) {self.__dict__}'
+
+    def __setattr__(self, attr_name, value):
+        """updates 'update_at' whenever an objects is modified
+        by overriding __setattr__"""
+        if attr_name == "updated_at":
+            self.__dict__[attr_name] == datetime.now()
