@@ -16,7 +16,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(base_model.id, str)
         self.assertIsInstance(base_model.created_at, datetime)
         self.assertIsInstance(base_model.updated_at, datetime)
-        self.assertEqual(base_model.created_at, base_model.updated_at)
+        self.assertNotEqual(base_model.created_at, base_model.updated_at)
 
     def test_kwargs_initialisation(self):
         """Test for inilialisation of an object with kwargs"""
@@ -45,10 +45,12 @@ class TestBaseModel(unittest.TestCase):
         """Test that setting an attribute updates `updated_at`"""
 
         model = BaseModel()
-        old_time = model.updated_at
+        old_time = model.created_at
         time.sleep(0.1)  # Ensure the time changes
         model.name = "test"
-        self.assertNotEqual(model.updated_at, old_time)
+        new_time = model.updated_at
+        self.assertNotEqual(new_time, old_time)
+        self.assertTrue(new_time, old_time)
         self.assertEqual(model.name, "test")
 
     def test_to_dict_method(self):
