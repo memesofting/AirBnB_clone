@@ -23,7 +23,7 @@ class BaseModel:
                 '''if key is not '__class__':'''
                 if key == 'created_at' or key == 'updated_at':
                     setattr(self, key, datetime.fromisoformat(value))
-                else:
+                elif key != '__class__':
                     setattr(self, key, value)
 
     def save(self):
@@ -41,10 +41,6 @@ class BaseModel:
         dict_copy['updated_at'] = str(self.updated_at)
         dict_copy['__class__'] = self.__class__.__name__
         return dict_copy
-
-    def to_obj(self, **kwargs):
-        """returns object from dictionary representation"""
-        pass
 
     def __str__(self):
         return f'[{self.__class__.__name__}] ({self.id}) {self.__dict__}'
