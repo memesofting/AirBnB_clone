@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """This is a file storage module"""
 
-
+from models.base_model import BaseModel
 import json
 
 
@@ -18,7 +18,7 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
-        """sets in __objects the obj with key <obj class name>.id"""
+        """sets in __objects the object with key <obj class name>.id"""
 
         objKey = f'{obj.__class__.__name__}.{obj.id}'
         self.__objects[objKey] = obj
@@ -28,8 +28,8 @@ class FileStorage:
 
         for key, obj in self.__objects.items():
             obj_dict = {key: obj.to_dict()}
-            with open(self.__filepath, 'w') as file:
-                json.dump(self.obj_dict, file)
+        with open(self.__filepath, 'w') as file:
+            json.dump(obj_dict, file)
 
     def reload(self):
         """deserializes the JSON file to __objects
@@ -41,6 +41,6 @@ class FileStorage:
             with open(self.__file_path, 'r') as file:
                 obj_dict = json.load(file)
                 for key, value in obj_dict.items():
-                    className = value['__class__']
+                    class_name = value['__class__']
         except FileNotFoundError:
             pass

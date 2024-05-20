@@ -5,6 +5,8 @@ from models.base_model import BaseModel
 
 
 class TestFileStorage(unittest.TestCase):
+    """Test for FileStorage class"""
+    
     def test_empty_dictionary(self):
         storage = FileStorage()
         assert storage.all() == {}
