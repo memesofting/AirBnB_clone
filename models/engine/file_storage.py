@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """This is a file storage module"""
 
-from models.base_model import BaseModel
+
 import json
 
 
@@ -26,9 +26,10 @@ class FileStorage:
     def save(self):
         """serializes __objects to JSON file (path: __file_path)"""
 
+        obj_dict = {}
         for key, obj in self.__objects.items():
-            obj_dict = {key: obj.to_dict()}
-        with open(self.__filepath, 'w') as file:
+            obj_dict[key] = obj.to_dict()
+        with open(self.__file_path, 'w') as file:
             json.dump(obj_dict, file)
 
     def reload(self):

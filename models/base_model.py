@@ -25,6 +25,8 @@ class BaseModel:
                     setattr(self, key, datetime.fromisoformat(value))
                 elif key != '__class__':
                     setattr(self, key, value)
+        else:
+            storage.new(self)
 
     def save(self):
         """Updates the instance attribute (updated_at)
