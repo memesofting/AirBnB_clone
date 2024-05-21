@@ -8,15 +8,21 @@ class TestFileStorage(unittest.TestCase):
     """Test for FileStorage class"""
 
     def test_empty_dictionary(self):
+        """tests storage file"""
+        
         storage = FileStorage()
         assert storage.all() == {}
 
     def test_objects_none(self):
+        """tests for no objects"""
+        
         storage = FileStorage()
         storage._FileStorage__objects = None
         assert storage.all() is None
 
     def test_object_creation(self):
+        """tests for ne object creation added"""
+        
         my_model = BaseModel()
         my_model.name = "My_First_Model"
         my_model.my_number = 89
