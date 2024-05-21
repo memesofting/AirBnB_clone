@@ -31,6 +31,7 @@ class BaseModel:
     def save(self):
         """Updates the instance attribute (updated_at)
         with current datetime"""
+        
         self.updated_at = datetime.now()
         storage.save()
         """return self.updated_at"""
@@ -38,6 +39,7 @@ class BaseModel:
     def to_dict(self):
         """Returns a dictionary containing all keys/values of the __dict__
         of the instance"""
+        
         dict_copy = self.__dict__.copy()
         dict_copy['created_at'] = str(self.created_at)
         dict_copy['updated_at'] = str(self.updated_at)
