@@ -3,7 +3,7 @@
 
 
 import json
-
+import os
 
 class FileStorage:
     """FileStorage class serializes instances to JSON file
@@ -43,5 +43,6 @@ class FileStorage:
                 obj_dict = json.load(file)
                 for key, value in obj_dict.items():
                     class_name = value['__class__']
+                    self.__objects[key] = obj
         except FileNotFoundError:
             pass
