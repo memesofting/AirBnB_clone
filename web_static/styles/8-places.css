@@ -1,0 +1,123 @@
+.places{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.places h1 {
+    font-size: 30px;
+    display: flex;
+    width: 100%;
+}
+
+.places article {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 390px;
+    margin: 20px;
+    border: solid #FF5A5F 1px;
+    border-radius: 4px;
+    align-items: center;
+    padding: 15px;
+}
+
+.places article h2 {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    height: 60px;
+    width: 75%;
+    justify-content: center;
+    align-self: baseline;
+    margin-bottom: 20px;
+    margin-top: 0;
+    flex: 1;
+}
+
+.price_by_night {
+    display: flex;
+    flex-direction: row;
+    color: #FF5A5F;
+    border: solid #FF5A5F 4px;
+    border-radius: 50%;
+    min-width: 60px;
+    height: 60px;
+    font-size: 30px;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 0;
+    justify-content: center;
+    align-items: center;
+    justify-items: right;
+}
+
+.information {
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-left: none;
+    border-right: none;
+    justify-content: center;
+    align-items: center;
+    text-align: end;
+}
+.description {
+    display: flex;
+    justify-content: center;
+}
+
+.user {
+    display: flex;
+    margin: 5px 0;
+    align-self: flex-start;
+}
+.user h4 {
+    margin: 0;
+    padding-right: 5px;
+}
+.number_bathrooms {
+    background-image: url(/web_static/images/icon_bath.png);
+}
+
+.max_guest {
+    background-image: url(/web_static/images/icon_group.png);
+}
+
+.number_rooms {
+    background-image: url(/web_static/images/icon_bed.png);
+}
+
+.max_guest, .number_bathrooms, .number_rooms {
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+.max_guest p {
+    align-self: flex-end;
+    margin-bottom: 0;
+    padding-top: 3px;
+}
+
+.number_bathrooms p {
+    align-self: flex-end;
+    margin-bottom: 0;
+    padding-top: 3px;
+}
+
+.number_rooms p {
+    align-self: flex-end;
+    margin-bottom: 0;
+    padding-top: 3px;
+}
