@@ -1,4 +1,29 @@
+.places{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
 
 .places h1 {
-    display: block;
+    font-size: 30px;
+    display: flex;
+    width: 100%;
+}
+
+.places article {
+    display: flex;
+    flex-direction: row;
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border: solid #FF5A5F 1px;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+}
+
+.places h2 {
+    font-size: 30px;
 }

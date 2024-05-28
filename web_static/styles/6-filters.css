@@ -25,12 +25,12 @@
     border: none;
 }
 
-h3 {
+.filters h3 {
     font-weight: 600;
     margin-bottom: 0;
 }
 
-h4 {
+.filters h4 {
     font-weight: 400;
     margin: 0;
 }
@@ -45,7 +45,8 @@ button {
     border-radius: 4px;
     padding: 0;
     margin-right: 30px;
-    right: 0;
+    cursor: pointer;
+    transition: opacity 0.3s;
 }
 
 .popover {
@@ -72,10 +73,6 @@ ul {
 ul li {
     list-style: none;
 }
-.locations:hover .popover {
-    display: block;
-}
-
-.amenities:hover .popover {
+.locations:hover .popover, .amenities:hover .popover {
     display: block;
 }
