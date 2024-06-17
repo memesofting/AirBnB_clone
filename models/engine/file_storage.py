@@ -3,6 +3,7 @@
 
 
 import json
+import os
 
 
 class FileStorage:
@@ -21,16 +22,24 @@ class FileStorage:
         """sets in __objects the object with key <obj class name>.id"""
 
         objKey = f'{obj.__class__.__name__}.{obj.id}'
+        print(f'Adding new object with key: {objKey}')
         self.__objects[objKey] = obj
 
     def save(self):
         """serializes __objects to JSON file (path: __file_path)"""
 
-        obj_dict = {}
+        """obj_dict = {}
         for key, obj in self.__objects.items():
-            obj_dict[key] = obj.to_dict()
+            obj_dict[key] = obj.to_dict()"""
+        if os.path.exists(self.__file_path):
+            with open(self.__file_path, 'r') as file:
+                existing_objects = json.load(file)
+        else:
+            existing_objects = {}
+        obj_dict = {key: obj.to_dict() for key, obj in self.__objects.items()}
+        all_objects = {**existing_objects, **obj_dict}
         with open(self.__file_path, 'w') as file:
-            json.dump(obj_dict, file)
+            json.dump(all_objects, file)
 
     def reload(self):
         """deserializes the JSON file to __objects
