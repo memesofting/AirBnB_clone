@@ -4,7 +4,7 @@
 
 import uuid
 from datetime import datetime
-from models import storage
+"""from models import storage"""
 
 
 class BaseModel:
@@ -12,6 +12,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """Initialises the base class"""
+        from models import storage
 
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
@@ -30,6 +31,7 @@ class BaseModel:
     def save(self):
         """Updates the instance attribute (updated_at)
         with current datetime"""
+        from models import storage
 
         self.updated_at = datetime.now()
         storage.save()

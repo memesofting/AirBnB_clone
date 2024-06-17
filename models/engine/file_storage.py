@@ -4,6 +4,7 @@
 
 import json
 import os
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -47,12 +48,16 @@ class FileStorage:
         if file does not exist, no execption is raised"""
 
         try:
-            with open(self.__file_path, 'r') as file:
-                obj_dict = json.load(file)
-                for key, value in obj_dict.items():
-                    class_name = value['__class__']
-                    cls = globals().get(class_name)
-                    if cls:
-                        self.__objects[key] = cls(**value)
+            if os.path.exists(self.__file_path):
+                with open(self.__file_path, 'r') as file:
+                    obj_dict = json.load(file)
+                    for key, value in obj_dict.items():
+                        class_name = value['__class__']
+                        """cls = globals().get(class_name)"""
+                        cls = {
+                            'BaseModel': BaseModel
+                        }.get(class_name)
+                        if cls:
+                            self.__objects[key] = cls(**value)
         except FileNotFoundError:
             pass
