@@ -22,7 +22,6 @@ class FileStorage:
         """sets in __objects the object with key <obj class name>.id"""
 
         objKey = f'{obj.__class__.__name__}.{obj.id}'
-        print(f'Adding new object with key: {objKey}')
         self.__objects[objKey] = obj
 
     def save(self):
