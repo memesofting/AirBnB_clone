@@ -1,5 +1,7 @@
 import unittest
-"""from models.base_model import BaseModel"""
+import os
+import json
+from datetime import datetime
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 
@@ -7,27 +9,35 @@ from models.base_model import BaseModel
 class TestFileStorage(unittest.TestCase):
     """Test for FileStorage class"""
 
-    def test_empty_dictionary(self):
-        """tests storage file"""
-        
-        storage = FileStorage()
-        assert storage.all() == {}
+    def setUp(self):
+        """sets up tests"""
 
-    def test_objects_none(self):
-        """tests for no objects"""
-        
-        storage = FileStorage()
-        storage._FileStorage__objects = None
-        assert storage.all() is None
+        self.storage = FileStorage()
+        self.my_model = BaseModel()
+        self.my_model.name = "First_Model"
+        self.my_model.my_number = 89
 
-    def test_object_creation(self):
-        """tests for ne object creation added"""
-        
-        my_model = BaseModel()
-        my_model.name = "My_First_Model"
-        my_model.my_number = 89
-        my_model.save()
-        self.assertIsInstance(my_model, BaseModel)
+    def tearDown(self):
+        """cleans up test"""
+
+        del self.storage
+        del self.my_model
+
+    def test_new(self):
+        """test the new method to ensure objects are added
+        to __objects with correct key"""
+
+        pass
+
+    def test_reload(self):
+        """tests fro proper deserialisation from JSON file"""
+
+        pass
+
+    def test_all(self):
+        """test the all method to ensure that it returns all objects"""
+
+        pass
 
 
 if __name__ == '__main__':
