@@ -2,16 +2,35 @@ import unittest
 import time
 from datetime import datetime
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
+import os
 
 
 class TestBaseModel(unittest.TestCase):
     """Tests for BaseModel class"""
 
     def setUp(self):
+        """sets up tests for basemodel"""
+
         self.my_model = BaseModel()
+        self.storage = FileStorage()
+        self.my_model_with_kwargs = BaseModel(
+            id="1234", created_at="2024-06-17T13:14:07.751138",
+            updated_at="2024-06-17T13:14:07.751205", name="Test")
 
     def tearDown(self):
+        """cleans up test files for basemodel"""
+        
+        file_path = FileStorage._FileStorage__file_path
+        print(f"TearDown: Attempting to remove the file at {file_path}")
+        
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            print("File successfully removed.")
+        else:
+            print("No file found to remove.")
         del self.my_model
+        del self.my_model_with_kwargs
 
     def test_instance(self):
         """Test for the initialisation of the base model"""
