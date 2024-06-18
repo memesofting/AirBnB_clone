@@ -20,15 +20,10 @@ class TestBaseModel(unittest.TestCase):
 
     def tearDown(self):
         """cleans up test files for basemodel"""
-        
+
         file_path = FileStorage._FileStorage__file_path
-        print(f"TearDown: Attempting to remove the file at {file_path}")
-        
         if os.path.exists(file_path):
             os.remove(file_path)
-            print("File successfully removed.")
-        else:
-            print("No file found to remove.")
         del self.my_model
         del self.my_model_with_kwargs
 

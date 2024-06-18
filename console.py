@@ -24,16 +24,16 @@ class HBNBCommand(cmd.Cmd):
         saves it to JSON file and print the id"""
 
         if not args:
-            print('class name missing')
+            print('**class name missing**')
             return
         class_name = args.split()[0]
         try:
             class_name = globals()[args]
         except KeyError:
-            print("class doesn't exist")
+            print("**class doesn't exist**")
             return
         if not issubclass(class_name, BaseModel):
-            print("class doesn't exist")
+            print("**class doesn't exist**")
             return
         new_instance = class_name()
         new_instance.save()
